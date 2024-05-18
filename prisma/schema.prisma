@@ -17,6 +17,6 @@ model Currency {
   id        Int      @id @default(autoincrement())
   code_from String
   code_to   String
-  value     Float
+  rate      Float
   updatedAt DateTime @updatedAt
 }
