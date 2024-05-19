@@ -6,9 +6,10 @@ import { AppService } from './app.service';
 import { PrismaModule } from './prisma/prisma.module';
 import { DataFetcherService } from './data-fetcher/data-fetcher.service';
 import { DataFetcherModule } from './data-fetcher/data-fetcher.module';
+import { RateModule } from './rate/rate.module';
 
 @Module({
-  imports: [HttpModule, PrismaModule, DataFetcherModule],
+  imports: [HttpModule, PrismaModule, DataFetcherModule, RateModule],
   controllers: [AppController],
   providers: [AppService, DataFetcherService],
 })
