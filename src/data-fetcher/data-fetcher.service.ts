@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { firstValueFrom } from 'rxjs';
+import { Cron, CronExpression } from '@nestjs/schedule';
+
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CurrencyData } from 'src/types/CurrencyData';
 
@@ -9,7 +11,7 @@ export class DataFetcherService {
   constructor(
     private readonly httpService: HttpService,
     private readonly prisma: PrismaService,
-  ) {}
+  ) { }
 
   async hasDataToday(): Promise<boolean> {
     const today = new Date();
@@ -25,6 +27,7 @@ export class DataFetcherService {
     return Boolean(existingData);
   }
 
+  @Cron(CronExpression.EVERY_DAY_AT_9AM)
   async fetchRate() {
     const hasDataToday = await this.hasDataToday();
     if (hasDataToday) {
