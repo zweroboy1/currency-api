@@ -22,6 +22,7 @@ model Currency {
 }
 
 model Subscription {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
+  id           Int       @id @default(autoincrement())
+  email        String    @unique
+  lastSentDate DateTime?
 }

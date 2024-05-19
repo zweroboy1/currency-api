@@ -1,5 +1,6 @@
 import { Module, OnModuleInit } from '@nestjs/common';
 import { HttpModule } from '@nestjs/axios';
+import { ScheduleModule } from '@nestjs/schedule';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -8,6 +9,7 @@ import { DataFetcherService } from './data-fetcher/data-fetcher.service';
 import { DataFetcherModule } from './data-fetcher/data-fetcher.module';
 import { RateModule } from './rate/rate.module';
 import { SubscriptionModule } from './subscription/subscription.module';
+import { MailModule } from './mail/mail.module';
 
 @Module({
   imports: [
@@ -16,6 +18,8 @@ import { SubscriptionModule } from './subscription/subscription.module';
     DataFetcherModule,
     RateModule,
     SubscriptionModule,
+    MailModule,
+    ScheduleModule.forRoot(),
   ],
   controllers: [AppController],
   providers: [AppService, DataFetcherService],
