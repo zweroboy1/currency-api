@@ -56,3 +56,11 @@ docker compose up
 ```
 
 06. Open http://localhost:4000 in your browser (port can be changed in .env file)
+
+## Details
+
+- The app use public API from https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5 to get currency rate.
+- The app fetch rates on the first run and every day at 9 AM.
+- Endpoint for the rate is http://localhost:4000/api/rate
+- Endpoint for the subscription is http://localhost:4000/api/subscribe (POST, email is required)
+- Mails are sent to email addresses at 3 AM every day.
