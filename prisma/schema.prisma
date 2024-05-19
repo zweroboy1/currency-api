@@ -20,3 +20,8 @@ model Currency {
   rate      Float
   updatedAt DateTime @updatedAt
 }
+
+model Subscription {
+  id    Int     @id @default(autoincrement())
+  email String  @unique
+}
