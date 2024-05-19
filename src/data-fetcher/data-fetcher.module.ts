@@ -8,4 +8,4 @@ import { PrismaService } from '../prisma/prisma.service';
   providers: [DataFetcherService, PrismaService],
   exports: [DataFetcherService],
 })
-export class DataFetcherModule { }
+export class DataFetcherModule {}

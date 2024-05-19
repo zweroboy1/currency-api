@@ -1,5 +1,5 @@
 import { Module, OnModuleInit } from '@nestjs/common';
-import { HttpModule } from "@nestjs/axios";
+import { HttpModule } from '@nestjs/axios';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -14,7 +14,7 @@ import { RateModule } from './rate/rate.module';
   providers: [AppService, DataFetcherService],
 })
 export class AppModule implements OnModuleInit {
-  constructor(private readonly dataFetcherService: DataFetcherService) { }
+  constructor(private readonly dataFetcherService: DataFetcherService) {}
 
   async onModuleInit() {
     await this.dataFetcherService.fetchRate();

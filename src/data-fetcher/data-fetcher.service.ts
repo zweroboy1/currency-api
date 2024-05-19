@@ -4,13 +4,12 @@ import { firstValueFrom } from 'rxjs';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CurrencyData } from 'src/types/CurrencyData';
 
-
 @Injectable()
 export class DataFetcherService {
   constructor(
     private readonly httpService: HttpService,
-    private readonly prisma: PrismaService
-  ) { }
+    private readonly prisma: PrismaService,
+  ) {}
 
   async hasDataToday(): Promise<boolean> {
     const today = new Date();
@@ -32,9 +31,15 @@ export class DataFetcherService {
       return;
     }
 
-    const response = await firstValueFrom(this.httpService.get<CurrencyData[]>('https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5'));
+    const response = await firstValueFrom(
+      this.httpService.get<CurrencyData[]>(
+        'https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=5',
+      ),
+    );
     const data = response.data;
-    const filteredData = data.find((item: CurrencyData) => item.ccy === 'USD' && item.base_ccy === 'UAH');
+    const filteredData = data.find(
+      (item: CurrencyData) => item.ccy === 'USD' && item.base_ccy === 'UAH',
+    );
 
     if (!filteredData) {
       console.log('Currency pair not found');
